@@ -36,6 +36,7 @@ const run = async (path, useEngines) => {
 }
 
 run(process.cwd(), ...process.argv.slice(2)).then(() => console.log('Success')).catch((err) => {
-  // console.error(err)
+  console.error(err)
+  
   // process.exitCode = 1
 })
