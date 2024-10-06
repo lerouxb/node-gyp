@@ -45,7 +45,7 @@
     "standard": "^17.0.0"
   },
   "scripts": {
-    "lint": "standard \"*/*.js\" \"test/**/*.js\" \".github/**/*.js\"",
+    "lint": "standard --write \"*/*.js\" \"test/**/*.js\" \".github/**/*.js\"",
     "test": "cross-env NODE_GYP_NULL_LOGGER=true mocha --timeout 15000 test/test-download.js test/test-*"
   }
 }
