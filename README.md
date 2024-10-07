@@ -1,5 +1,21 @@
 # `node-gyp` - Node.js native addon build tool
 
+This is a fork of the original and excellent `node-gyp` with only one feature added: Support for Node v12. The Electron maintainers took this step to ensure that our community can easily build their Electron apps on macOS Sequoia. Here is what happened:
+
+- Python 3.12 has removed `distutils`, which `node-gyp` below v10 depended on.
+- macOS Sequoia updated their default version of Python to 3.12.
+- When installing a native Node addon, a lot of code bases suddenly showed `ModuleNotFoundError: No module named 'distutils'` error messages that are cryptic for anyone who doesn't have a full understanding of the dependency chain involved
+
+This left the Electron maintainers with the following choices:
+
+1. **Tell the community to manually install either Python 3.11 or `setuptools`**. While this fixes the issue, it requires manual user intervention and requires our users to first search for the error message.
+2. **Upgrade to `node-gyp` v10**. That would have required a bump in minimum Node.js version for `@electron/rebuild` and in turn all other packages that depend on it, resulting in major version bumps across the entire ecosystem. This too doesn't fix the issue for our users without them performing manual major version upgrades.
+3. **Fork node-gyp v10, make it compatible with Node.js v12, and only patch our tools**: We chose this option to get a fix out to our users as quickly and painless as possible.
+
+Electron has a major version bump in required Node.js version on its roadmap. Once that is the case, we will sunset this fork and go back to the original `node-gyp`.
+
+# Original Readme
+
 [![Build Status](https://github.com/nodejs/node-gyp/workflows/Tests/badge.svg?branch=main)](https://github.com/nodejs/node-gyp/actions?query=workflow%3ATests+branch%3Amain)
 ![npm](https://img.shields.io/npm/dm/node-gyp)
 
