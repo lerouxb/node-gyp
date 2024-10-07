@@ -78,7 +78,7 @@ async function run () {
   }
 
   try {
-    const args = await prog.commands[command.name](command.args) ?? []
+    const args = await prog.commands[command.name](command.args) || []
 
     if (command.name === 'list') {
       if (args.length) {
