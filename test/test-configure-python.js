@@ -7,7 +7,7 @@ const { devDir } = require('./common')
 const gyp = require('../lib/node-gyp')
 const requireInject = require('require-inject')
 
-const configure = requireInject('../lib/configure', {
+const configure = requireInject.withEmptyCache('../lib/configure', {
   'graceful-fs': {
     openSync: () => 0,
     closeSync: () => {},

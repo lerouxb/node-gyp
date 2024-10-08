@@ -10,7 +10,7 @@ const semver = require('semver')
 
 const versionSemver = semver.parse(process.version)
 
-const configure = requireInject('../lib/configure', {
+const configure = requireInject.withEmptyCache('../lib/configure', {
   'graceful-fs': {
     openSync: () => 0,
     closeSync: () => {},
@@ -26,7 +26,7 @@ const configure = requireInject('../lib/configure', {
   }
 })
 
-const configure2 = requireInject('../lib/configure', {
+const configure2 = requireInject.withEmptyCache('../lib/configure', {
   'graceful-fs': {
     openSync: () => 0,
     closeSync: () => {},
