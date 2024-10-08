@@ -4,7 +4,7 @@ const { describe, it } = require('mocha')
 const assert = require('assert')
 const path = require('path')
 const requireInject = require('require-inject')
-const { findAccessibleSync } = requireInject('../lib/util', {
+const { findAccessibleSync } = requireInject.withEmptyCache('../lib/util', {
   'graceful-fs': {
     closeSync: function () { return undefined },
     openSync: function (path) {

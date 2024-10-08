@@ -16,7 +16,7 @@ const { download } = require('../lib/download')
 describe('install', function () {
   it('EACCES retry once', async () => {
     let statCalled = 0
-    const mockInstall = requireInject('../lib/install', {
+    const mockInstall = requireInject.withEmptyCache('../lib/install', {
       'graceful-fs': {
         promises: {
           stat (_) {
